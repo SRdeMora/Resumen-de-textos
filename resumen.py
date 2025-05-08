@@ -13,7 +13,7 @@ app = Flask(__name__)
 CORS(app)  # Habilitar CORS para permitir solicitudes externas
 
 def resumir_texto(texto, num_oraciones=3):
-    """Genera un resumen abstractivo usando LSA (Latent Semantic Analysis)."""
+    """Genera un resumen extractivo usando LSA."""
     parser = PlaintextParser.from_string(texto, Tokenizer("spanish"))
     resumenizador = LsaSummarizer()
     
@@ -21,6 +21,10 @@ def resumir_texto(texto, num_oraciones=3):
     resumen_texto = " ".join(str(oracion) for oracion in resumen)
     
     return resumen_texto
+
+@app.route('/')
+def inicio():
+    return "¡Bienvenido a la API de Resumen de Texto!"
 
 @app.route('/resumir', methods=['POST'])
 def procesar_resumen():
@@ -34,5 +38,5 @@ def procesar_resumen():
     return jsonify({"resumen": resumen})
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # Usar el puerto definido por Render o 5000 por defecto
+    port = int(os.environ.get("PORT", 10000))  # Usar el puerto definido por Render o 5000 por defecto
     app.run(host="0.0.0.0", port=port)
