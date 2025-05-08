@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)  # Habilitar CORS para permitir solicitudes desde otras fuentes
 
 # Cargar el modelo de resumen
-resumidor = pipeline("summarization", model="facebook/mbart-large-50")
+resumidor = pipeline("summarization", model="facebook/mbart-large-50", force_download=True)
 
 @app.route('/resumir', methods=['POST'])
 def resumir_texto():
