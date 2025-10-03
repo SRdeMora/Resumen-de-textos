@@ -98,5 +98,4 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local.
     ```
     El servidor se iniciará en `http://127.0.0.1:10000`.
 
-2.  **Abre la aplicación en tu navegador:**
-    Abre el archivo `index.html` directamente en tu navegador web para comenzar a usar la aplicación.
+
